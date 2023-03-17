@@ -4,7 +4,7 @@ import { useMutation } from "../src/rspc";
 import styles from "../styles/Home.module.css";
 
 const UsingUseMutation: NextPage = () => {
-  const { mutate, data, isLoading, error } = useMutation("sendMsg");
+  const { mutate, data, isLoading, error } = useMutation("createUser");
 
   return (
     <div className={styles.container}>
@@ -20,21 +20,16 @@ const UsingUseMutation: NextPage = () => {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            mutate(event.currentTarget.message.value);
+            mutate({ email: event.currentTarget.email.value });
           }}
         >
-          <input
-            type="text"
-            name="message"
-            placeholder="Your message"
-            defaultValue="Hello from the client!"
-          />
+          <input type="text" name="email" placeholder="Email" />
           <button>Submit</button>
         </form>
 
         <p className={styles.description}>
           {isLoading && "Loading data ..."}
-          {data && `Server received message: ${data}`}
+          {data && `Server received message: ${JSON.stringify(data)}`}
           {error?.message}
         </p>
       </main>

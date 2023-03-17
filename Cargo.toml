@@ -71,6 +71,9 @@ members = [
     "./examples/axum",
     "./examples/vercel",
 ]
+resolver = "2"
 
 [patch.crates-io]
 httpz = { git = "https://github.com/oscartbeaumont/httpz", rev = "be67ead9320095bdecf90cae75fded2411509b0f" } # TODO: Move back to crates.io release
+specta = { git = "https://github.com/oscartbeaumont/specta", rev = "cd12b17c6d77be75117b919dff1e60767538a741" }
+rspc = { path = "./" }
